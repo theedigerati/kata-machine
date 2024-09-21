@@ -10,7 +10,7 @@ export default function bs_list(haystack: number[], needle: number): boolean {
             return true;
         }
         if (needle > v) {
-            lo = lo + 1;
+            lo = mid + 1;
         } else {
             hi = mid;
         }
