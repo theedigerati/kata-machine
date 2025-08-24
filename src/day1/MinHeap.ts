@@ -11,6 +11,31 @@ export default class MinHeap {
 
     insert(value: number): void {
         this.data[this.length] = value;
+        this.heapifyUp(this.length - 1);
+    }
+
+    private heapifyUp(idx: number) {
+        if (idx === 0) {
+            return;
+        }
+
+        const parentIdx = this.parent(idx);
+        const parentV = this.data[parentIdx];
+        const v = this.data[idx];
+
+        if (v < parentV) {
+            this.data[parentIdx] = v;
+            this.data[idx] = parentV;
+            this.heapifyUp(parentIdx);
+        }
+    }
+
+    private parent(idx: number): number {
+        return Math.floor((idx - 1) / 2);
+    }
+
+    _insert(value: number): void {
+        this.data[this.length] = value;
 
         if (this.length === 1) {
             return;
